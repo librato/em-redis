@@ -495,8 +495,9 @@ module EventMachine
           @reconnecting = true
           @deferred_status = nil
         else
-          # TODO: get rid of this exception
-          raise 'Unable to connect to redis server'
+          # What's the correct code value to use here since this
+          # doesn't come straight from Redis?
+          @error_callback.call(-1)
         end
       end
 
